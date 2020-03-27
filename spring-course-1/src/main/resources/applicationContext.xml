@@ -8,7 +8,19 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- Define your beans here -->
-    <bean id="myCoach" class="course.spring.TrackCoach"></bean>
+    
+    <context:property-placeholder location="classpath:sport.properties"/>
+    
+    <bean id="happyFortuneService" class="course.spring.HappyFortuneService"></bean>
+    <bean id="randomFortuneService" class="course.spring.RandomFortuneService"></bean>
+    <bean id="myCoach" class="course.spring.TrackCoach">
+        <constructor-arg ref="happyFortuneService"/>
+    </bean>
+    <bean id="myCricketCoach" class="course.spring.CricketCoach">
+        <property name="fortuneService" ref="randomFortuneService"/>
+        <property name="email" value="${foo.email}"/>
+        <property name="team" value="the great team"/>
+    </bean>
 </beans>
 
 

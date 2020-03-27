@@ -7,9 +7,8 @@ package course.spring;
 
 /**
  *
- * @author eslam.ahmed
+ * @author islam
  */
-public interface Coach {
-    String getDailyWorkout();
-    String getDailyFortune();
+public interface FortuneService {
+    public String getFortune();
 }
